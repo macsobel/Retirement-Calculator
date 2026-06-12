@@ -27,3 +27,13 @@ details > summary::-webkit-details-marker { display: none; }
 details[open] > summary { border-bottom: 1px solid #334155; border-bottom-left-radius: 0; border-bottom-right-radius: 0; margin-bottom: 1rem; }
 details > summary::after { content: '►'; float: right; font-size: 0.8rem; transform: rotate(0deg); transition: transform 0.2s; color: #94a3b8; margin-top: 0.2rem;}
 details[open] > summary::after { transform: rotate(90deg); }
+
+
+/* Responsive Layout */
+@media (max-width: 1024px) {
+    .app-container { height: auto; display: block; overflow: auto; }
+    .main-content { flex-direction: column; overflow: visible; display: flex; }
+    .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #1e293b; overflow-y: visible; order: 2; }
+    .content-area { overflow: visible; order: 1; }
+    #chart-container { min-height: 400px; }
+}

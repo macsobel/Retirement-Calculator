@@ -598,12 +598,12 @@
 
             let ages = this.history.map(h => h.age);
             let seriesData = [
-                { name: 'Traditional TSP', data: this.history.map(h => h.balances.tradTsp), color: '#1e40af' },
-                { name: 'Traditional IRA', data: this.history.map(h => h.balances.tradIra), color: '#3b82f6' },
-                { name: 'Roth TSP', data: this.history.map(h => h.balances.rothTsp), color: '#10b981' },
-                { name: 'Roth IRA', data: this.history.map(h => h.balances.rothIra), color: '#34d399' },
-                { name: 'Taxable Brokerage', data: this.history.map(h => h.balances.taxable), color: '#8b5cf6' },
-                { name: 'HYSA / Cash', data: this.history.map(h => h.balances.hysa), color: '#f59e0b' }
+                { name: 'Traditional TSP', data: this.history.map(h => [h.age, h.balances.tradTsp]), color: '#1e40af' },
+                { name: 'Traditional IRA', data: this.history.map(h => [h.age, h.balances.tradIra]), color: '#3b82f6' },
+                { name: 'Roth TSP', data: this.history.map(h => [h.age, h.balances.rothTsp]), color: '#10b981' },
+                { name: 'Roth IRA', data: this.history.map(h => [h.age, h.balances.rothIra]), color: '#34d399' },
+                { name: 'Taxable Brokerage', data: this.history.map(h => [h.age, h.balances.taxable]), color: '#8b5cf6' },
+                { name: 'HYSA / Cash', data: this.history.map(h => [h.age, h.balances.hysa]), color: '#f59e0b' }
             ];
 
             let s = this.state;
@@ -671,7 +671,7 @@
             Highcharts.chart('chart-container', {
                 chart: { type: 'area', backgroundColor: 'transparent' },
                 title: { text: 'Portfolio Longevity Projection' },
-                xAxis: { categories: ages, tickInterval: 5, title: { text: 'Age' }, plotLines: plotLines },
+                xAxis: { type: 'linear', tickInterval: 5, title: { text: 'Age' }, plotLines: plotLines },
                 yAxis: {
                     title: { text: 'Balance ($)' },
                     labels: { formatter: function() { return '$' + (this.value / 1000000).toFixed(1) + 'M'; } }
